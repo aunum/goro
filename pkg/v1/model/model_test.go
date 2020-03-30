@@ -7,8 +7,8 @@ import (
 	"testing"
 
 	"github.com/aunum/gold/pkg/v1/dense"
-	. "github.com/aunum/gold/pkg/v1/model"
 	"github.com/aunum/goro/pkg/v1/layer"
+	. "github.com/aunum/goro/pkg/v1/model"
 	"github.com/aunum/log"
 
 	"github.com/stretchr/testify/require"

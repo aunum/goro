@@ -1,4 +1,4 @@
-// Package model provides a high level library for Gorgonia.
+// Package model provides an interface for machine learning models.
 package model
 
 import (
