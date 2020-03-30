@@ -1,0 +1,29 @@
+sudo: false
+language: go
+branches:
+  only:
+    - master
+
+go:
+  - 1.7.x
+  - 1.8.x
+  - 1.9.x
+  - 1.10.x
+  - tip
+
+env:
+  global:
+    - GOARCH=amd64
+    - TRAVISTEST=true
+
+go_import_path: gorgonia.org/vecf64
+
+before_install:
+  - go get github.com/mattn/goveralls
+
+script:
+  - ./test.sh
+
+matrix:
+  allow_failures:
+    - go: tip
