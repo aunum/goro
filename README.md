@@ -1,4 +1,4 @@
-![logo](./static/logo.png)
+![logo](./static/logo.png)   
 [![GoDoc](https://godoc.org/github.com/aunum/goro?status.svg)](https://godoc.org/github.com/aunum/goro)
 [![Go Report Card](https://goreportcard.com/badge/github.com/aunum/goro)](https://goreportcard.com/report/github.com/aunum/goro)
 # Overview
