@@ -46,18 +46,20 @@ model.Compile(xi, yi,
 // fit the model
 model.Fit(xTrain, yTrain)
 
-// Use the model to predict an 'x'
+// use the model to predict an 'x'
 prediction, _ := model.Predict(xTest)
 
 // fit the model with a batch
 model.FitBatch(xTrainBatch, yTrainBatch)
 
-// Use the model to predict a batch of 'x'
+// use the model to predict a batch of 'x'
 prediction, _ = model.PredictBatch(xTestBatch)
 ```
 
 ## Examples
 See the [examples](./examples) folder for example implementations.
+
+There are many examples in the reinforcement learning library [Gold](https://github.com/aunum/gold).
 
 ## Docs
 Each package contains a README explaining the usage, also see [GoDoc](https://godoc.org/github.com/aunum/goro).
