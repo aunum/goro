@@ -200,7 +200,7 @@ func (i *Input) OneOfMany() (err error) {
 func (i *Input) EnsureBatch() *Input {
 	if i.Shape()[0] != 1 || len(i.Shape()) == 1 {
 		i.shape = append([]int{1}, i.shape...)
-		log.Infof("reshaping %v to %v to have a batch of 1", i.Name(), i.Shape())
+		log.Debugf("reshaping %v to %v to have a batch of 1", i.Name(), i.Shape())
 	}
 	return i
 }
