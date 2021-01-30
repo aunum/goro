@@ -639,7 +639,7 @@ func (s *Sequential) CloneLearnablesTo(to *Sequential) error {
 func (s *Sequential) SetLearnables(desired g.Nodes) error {
 	destination := s.trainChain.Learnables()
 	if len(desired) != len(destination) {
-		return fmt.Errorf("models must be identical to clone learnables")
+		return fmt.Errorf("cannot set learnables: number of desired nodes not equal to number of nodes in model")
 	}
 	for i, learnable := range destination {
 		c := desired[i].Clone()
