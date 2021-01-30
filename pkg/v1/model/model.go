@@ -635,6 +635,38 @@ func (s *Sequential) CloneLearnablesTo(to *Sequential) error {
 	return nil
 }
 
+// SetLearnables sets learnables to model
+func (s *Sequential) SetLearnables(desired g.Nodes) error {
+	destination := s.trainChain.Learnables()
+	if len(desired) != len(destination) {
+		return fmt.Errorf("cannot set learnables: number of desired nodes not equal to number of nodes in model")
+	}
+	for i, learnable := range destination {
+		c := desired[i].Clone()
+		err := g.Let(learnable, c.(*g.Node).Value())
+		if err != nil {
+			return err
+		}
+	}
+	new := s.trainChain.Learnables()
+	shared := map[string]*layer.Chain{
+		"trainBatch":  s.trainBatchChain,
+		"online":      s.onlineChain,
+		"onlineBatch": s.onlineBatchChain,
+	}
+	for name, chain := range shared {
+		s.logger.Debugv("chain", name)
+		for i, learnable := range chain.Learnables() {
+			err := g.Let(learnable, new[i].Value())
+			if err != nil {
+				return err
+			}
+			s.logger.Debugvb(learnable.Name(), learnable.Value())
+		}
+	}
+	return nil
+}
+
 // Opts are optsion for a model
 type Opts struct {
 	opts []Opt
